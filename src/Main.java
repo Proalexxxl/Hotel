@@ -12,7 +12,7 @@ public class Main {
         Client clientModel = new Client();
         Hotel hotelModel = new Hotel();
         ClientView clientView = new ClientView(clientController, clientModel, hotelModel);
-        clientController = new ClientController(clientView);
+        clientController = new ClientController(clientView, clientModel, hotelModel);
         clientController.runApp();
     }
 }

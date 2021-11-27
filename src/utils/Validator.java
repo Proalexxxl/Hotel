@@ -114,4 +114,24 @@ public class Validator {
         }
         return hours;
     }
+
+    // Валидация ввода звезд гостиницы
+    public static int validateHotelStars(Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            String str = scanner.nextLine().trim();
+            System.out.printf("\"%s\" - не число!\n", str);
+            System.out.print("Введите количество!: ");
+        }
+        int quantity = scanner.nextInt();
+        while (quantity <= 0 || quantity > 5) {
+            System.out.print("Неверное значение! Введите количество звезд: ");
+            while (!scanner.hasNextInt()) {
+                String str = scanner.next().trim();
+                System.out.printf("\"%s\" - не число!\n", str);
+                System.out.print("Введите количество!: ");
+            }
+            quantity = scanner.nextInt();
+        }
+        return quantity;
+    }
 }

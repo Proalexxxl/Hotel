@@ -25,8 +25,8 @@ public class Hotel implements PriceNight, TotalPrice {
     }
 
     @Override
-    public double priceNight(double price, double numberTax, double starsTax) {
-        return price * numberTax * starsTax;
+    public double priceNight(double price, double numberClientRate, int numberClient, double starsRate, int numberStar) {
+        return price * numberClientRate * numberClient * starsRate * numberStar;
     }
 
     @Override

@@ -35,14 +35,18 @@ public class ClientView {
         numberNight = Validator.validateQuantityInput(scanner);
         hotelModel.setNumberNight(numberNight);
 
-        System.out.print("Введите количество проживающихж ");
+        System.out.print("Введите количество проживающих: ");
         numberSubject = Validator.validateQuantityInput(scanner);
-        clientModel.setNumberSubject(numberSubject);
+        clientModel.setNumberClient(numberSubject);
 
         System.out.print("Введите колличество звезд отеля: ");
-        numberStar = Validator.validateQuantityInput(scanner);
+        numberStar = Validator.validateHotelStars(scanner);
         hotelModel.setNumberStar(numberStar);
 
         scanner.close();
+    }
+
+    public void getOutput(String output) {
+        System.out.println(output);
     }
 }

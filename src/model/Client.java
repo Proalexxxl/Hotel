@@ -3,7 +3,7 @@ package model;
 public class Client {
 
     String name;
-    int numberSubject;
+    int numberClient;
 
     public String getName() {
         return name;
@@ -13,11 +13,11 @@ public class Client {
         this.name = name;
     }
 
-    public int getNumberSubject() {
-        return numberSubject;
+    public int getNumberClient() {
+        return numberClient;
     }
 
-    public void setNumberSubject(int numberSubject) {
-        this.numberSubject = numberSubject;
+    public void setNumberClient(int numberSubject) {
+        this.numberClient = numberSubject;
     }
 }
