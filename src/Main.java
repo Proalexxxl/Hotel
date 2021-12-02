@@ -3,6 +3,7 @@ import controllers.ClientController;
 import model.Client;
 import model.Hotel;
 import views.ClientView;
+import java.sql.*;
 
 public class Main {
 
