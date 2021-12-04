@@ -1,7 +1,7 @@
 package controllers;
 
 import model.Client;
-import model.Hotel;
+import model.Employee;
 import utils.Rounder;
 import views.ClientView;
 
@@ -9,7 +9,7 @@ public class ClientController {
 
     ClientView clientView;
     Client clientModel;
-    Hotel hotelModel;
+    Employee employeeModel;
     double starsRate;
     double numbersClientRate;
     double price;
@@ -19,13 +19,13 @@ public class ClientController {
     String pattern;
     String output;
 
-    public ClientController(ClientView clientView, Client clientModel, Hotel hotelModel) {
+    public ClientController(ClientView clientView, Client clientModel, Employee employeeModel) {
         this.clientView = clientView;
         this.clientModel = clientModel;
-        this.hotelModel = hotelModel;
+        this.employeeModel = employeeModel;
     }
 
-    public void runApp() {
+    public void runAppClient() {
         starsRate = 1.2;
         numbersClientRate = 1.3;
         price = 399.99;
@@ -33,12 +33,12 @@ public class ClientController {
 
         clientView.inputData();
 
-        priceNight = hotelModel.priceNight(price, numbersClientRate, clientModel.getNumberClient(), starsRate, hotelModel.getNumberStar());
-        totalPrice = hotelModel.totalPrice(priceNight, hotelModel.getNumberNight());
+        priceNight = employeeModel.priceNight(price, numbersClientRate, clientModel.getNumberClient(), starsRate, employeeModel.getNumberStar());
+        totalPrice = employeeModel.totalPrice(priceNight, employeeModel.getNumberNight());
 
         totalPriceRound = Rounder.round(totalPrice, pattern);
 
-        output = "Отель \"Марсель\" \nПериод проживания: " + hotelModel.getNumberNight() +
+        output = "Отель \"Марсель\" \nПериод проживания: " + employeeModel.getNumberNight() +
                     " ночей.\nСтоимость проживания за весь период: " + totalPriceRound + " грн.";
 
         clientView.getOutput(output);

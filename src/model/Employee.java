@@ -3,7 +3,7 @@ package model;
 import base.PriceNight;
 import base.TotalPrice;
 
-public class Hotel implements PriceNight, TotalPrice {
+public class Employee implements PriceNight, TotalPrice {
 
     int numberNight;
     int numberStar;

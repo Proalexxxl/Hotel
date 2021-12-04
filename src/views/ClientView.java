@@ -2,7 +2,7 @@ package views;
 
 import controllers.ClientController;
 import model.Client;
-import model.Hotel;
+import model.Employee;
 import utils.Validator;
 
 import java.util.Scanner;
@@ -11,17 +11,17 @@ public class ClientView {
 
     ClientController clientController;
     Client clientModel;
-    Hotel hotelModel;
+    Employee employeeModel;
     Scanner scanner;
     String name;
     int numberNight;
     int numberSubject;
     int numberStar;
 
-    public ClientView(ClientController clientController, Client clientModel, Hotel hotelModel) {
+    public ClientView(ClientController clientController, Client clientModel, Employee employeeModel) {
         this.clientController = clientController;
         this.clientModel = clientModel;
-        this.hotelModel = hotelModel;
+        this.employeeModel = employeeModel;
     }
 
     public void inputData(){
@@ -33,7 +33,7 @@ public class ClientView {
 
         System.out.print("Введите коллисество ночей: ");
         numberNight = Validator.validateIntInput(scanner);
-        hotelModel.setNumberNight(numberNight);
+        employeeModel.setNumberNight(numberNight);
 
         System.out.print("Введите количество проживающих: ");
         numberSubject = Validator.validateIntInput(scanner);
@@ -41,7 +41,7 @@ public class ClientView {
 
         System.out.print("Введите колличество звезд отеля: ");
         numberStar = Validator.validateHotelStars(scanner);
-        hotelModel.setNumberStar(numberStar);
+        employeeModel.setNumberStar(numberStar);
 
         scanner.close();
     }
