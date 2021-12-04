@@ -28,15 +28,15 @@ public class ClientView {
         scanner = new Scanner(System.in);
 
         System.out.print("Введите имя: ");
-        name = Validator.validateName(scanner);
+        name = Validator.validateString(scanner);
         clientModel.setName(name);
 
         System.out.print("Введите коллисество ночей: ");
-        numberNight = Validator.validateQuantityInput(scanner);
+        numberNight = Validator.validateIntInput(scanner);
         hotelModel.setNumberNight(numberNight);
 
         System.out.print("Введите количество проживающих: ");
-        numberSubject = Validator.validateQuantityInput(scanner);
+        numberSubject = Validator.validateIntInput(scanner);
         clientModel.setNumberClient(numberSubject);
 
         System.out.print("Введите колличество звезд отеля: ");
