@@ -16,9 +16,9 @@ public class Main {
         Client clientModel = new Client();
         Employee employeeModel = new Employee();
         ClientView clientView = new ClientView(clientController, clientModel, employeeModel);
-        clientController = new ClientController(clientView, clientModel, employeeModel);
         EmployeeController employeeController = new EmployeeController();
-        DBController dbController = new DBController(constantsDB);
+        DBController dbController = new DBController(constantsDB, clientModel, employeeModel);
+        clientController = new ClientController(clientView, clientModel, employeeModel, dbController);
         AppController appController = new AppController(clientController, employeeController, dbController, constantsDB);
 
         appController.subjectChoice();

@@ -8,6 +8,7 @@ import views.ClientView;
 public class ClientController {
 
     ClientView clientView;
+    DBController dbController;
     Client clientModel;
     Employee employeeModel;
     double starsRate;
@@ -19,10 +20,11 @@ public class ClientController {
     String pattern;
     String output;
 
-    public ClientController(ClientView clientView, Client clientModel, Employee employeeModel) {
+    public ClientController(ClientView clientView, Client clientModel, Employee employeeModel, DBController dbController) {
         this.clientView = clientView;
         this.clientModel = clientModel;
         this.employeeModel = employeeModel;
+        this.dbController = dbController;
     }
 
     public void runAppClient() {
@@ -33,7 +35,9 @@ public class ClientController {
 
         clientView.inputData();
 
-        priceNight = employeeModel.priceNight(price, numbersClientRate, clientModel.getNumberClient(), starsRate, employeeModel.getNumberStar());
+        dbController.insertGuest(clientModel.getName(), clientModel.getNumberClient(), clientModel.getNumberStars());
+
+        priceNight = employeeModel.priceNight(price, numbersClientRate, clientModel.getNumberClient(), starsRate, clientModel.getNumberStars());
         totalPrice = employeeModel.totalPrice(priceNight, employeeModel.getNumberNight());
 
         totalPriceRound = Rounder.round(totalPrice, pattern);

@@ -41,7 +41,7 @@ public class ClientView {
 
         System.out.print("Введите колличество звезд отеля: ");
         numberStar = Validator.validateHotelStars(scanner);
-        employeeModel.setNumberStar(numberStar);
+        clientModel.setNumberStars(numberStar);
 
         scanner.close();
     }
