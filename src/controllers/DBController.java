@@ -69,8 +69,6 @@ public class DBController {
     public void insertGuest(String name, int quantity, int numberStars) {
         String sql = "INSERT INTO guest(name, quantity, stars) VALUES(?,?,?)";
 
-
-
         try (PreparedStatement pstmt = connect().prepareStatement(sql)){
             pstmt.setString(1, name);
             pstmt.setInt(2, quantity);
