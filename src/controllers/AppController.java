@@ -1,5 +1,6 @@
 package controllers;
 
+import base.ConstantsDB;
 import java.util.Scanner;
 
 public class AppController {
@@ -9,13 +10,24 @@ public class AppController {
     EmployeeController employeeController;
     Scanner scanner;
     boolean variableEquals;
+    DBController dbController;
+    ConstantsDB constantsDB;
 
-    public AppController(ClientController clientController, EmployeeController employeeController) {
+    public AppController(ClientController clientController, EmployeeController employeeController, DBController dbController, ConstantsDB constantsDB) {
         this.clientController = clientController;
         this.employeeController = employeeController;
+        this.dbController = dbController;
+        this.constantsDB = constantsDB;
     }
 
-    public void subjectChoice(){
+    public void subjectChoice() {
+        if (DBController.isBaseExist()) {
+            System.out.println("База: " + ConstantsDB.DB_NAME + " существует.");
+        } else {
+            DBController.createDatabase(ConstantsDB.DB_NAME);
+            System.out.println("База данных: " + ConstantsDB.DB_NAME + " создана.");
+        }
+
         variableEquals = true;
         scanner = new Scanner(System.in);
         System.out.println("Введите субъекта (клиент/сотрудник): ");
