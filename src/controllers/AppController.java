@@ -21,11 +21,11 @@ public class AppController {
     }
 
     public void subjectChoice() {
-        if (DBController.isBaseExist()) {
-            System.out.println("База: " + ConstantsDB.DB_NAME + " существует.");
+        if (dbController.isBaseExist()) {
+            System.out.println("База: " + constantsDB.DB_NAME + " существует.");
         } else {
-            DBController.createDatabase(ConstantsDB.DB_NAME);
-            System.out.println("База данных: " + ConstantsDB.DB_NAME + " создана.");
+            dbController.createDatabase(constantsDB.DB_NAME);
+            System.out.println("База данных: " + constantsDB.DB_NAME + " создана.");
         }
 
         variableEquals = true;

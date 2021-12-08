@@ -10,21 +10,41 @@ import java.sql.SQLException;
 
 public class DBController {
 
-    static ConstantsDB constantsDB;
+    ConstantsDB constantsDB;
+    DBController dbController;
+    String dbDriver;
+    String dbName;
+    String dbBaseUrl;
 
     public DBController(ConstantsDB constantsDB) {
-        DBController.constantsDB = constantsDB;
+        this.constantsDB = constantsDB;
     }
 
-    public static boolean isBaseExist() {
-        String filePath = ConstantsDB.DB_BASE_URL + ConstantsDB.DB_NAME;
+    public Connection connect() {
+        dbDriver = constantsDB.DB_DRIVER;
+        dbBaseUrl = constantsDB.DB_BASE_URL;
+        dbName = constantsDB.DB_NAME;
+        String url = dbDriver + dbBaseUrl + dbName;
+        Connection conn = null;
+
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return conn;
+    }
+
+    public boolean isBaseExist() {
+        String filePath = constantsDB.DB_BASE_URL + constantsDB.DB_NAME;
         File dbFile = new File(filePath);
         return dbFile.exists();
     }
 
-    public static void createDatabase(String fileName) {
-        String dbDriver = constantsDB.DB_DRIVER;
-        String dbBaseUrl = constantsDB.DB_BASE_URL;
+    public void createDatabase(String fileName) {
+        dbDriver = constantsDB.DB_DRIVER;
+        dbBaseUrl = constantsDB.DB_BASE_URL;
         String url = dbDriver + dbBaseUrl +fileName;
 
         try (Connection conn = DriverManager.getConnection(url)) {
