@@ -3,10 +3,14 @@ package controllers;
 import base.ConstantsDB;
 import model.Client;
 import model.Employee;
-
 import java.io.File;
-import java.sql.*;
-
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 public class DBController {
 
@@ -64,6 +68,8 @@ public class DBController {
 
     public void insertGuest(String name, int quantity, int numberStars) {
         String sql = "INSERT INTO guest(name, quantity, stars) VALUES(?,?,?)";
+
+
 
         try (PreparedStatement pstmt = connect().prepareStatement(sql)){
             pstmt.setString(1, name);
